@@ -25,7 +25,7 @@ unsigned int pow_mod(unsigned int in_base, unsigned int power, unsigned int modu
 }
 
 //This is the Miller-Rabin primality test
-bool is_prime_MR(unsigned int n){
+bool is_prime_miller_rabin(unsigned int n){
     if (n == 2){
         return true;
     }
@@ -72,7 +72,7 @@ bool is_prime_MR(unsigned int n){
 
 //this is the brute force version
 bool is_prime_brute_force(unsigned int n){
-    unsigned int cutoff = int(std::sqrt(n));
+    unsigned int cutoff = n-1; //BETTER if cutoff = int(std::sqrt(n));
     for(int i = 2; i <= cutoff; i++){
         if (n % i == 0){
             return false;
@@ -83,7 +83,7 @@ bool is_prime_brute_force(unsigned int n){
 
 //just a wrapper so I can quickly change methods
 bool is_prime(unsigned int n){
-    return is_prime_MR(n);
+    return is_prime_miller_rabin(n);
 }
 
 //the handler for the outside world
