@@ -1,0 +1,1 @@
+unsigned int random_integer(unsigned int, unsigned int);
